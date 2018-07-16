@@ -1,5 +1,6 @@
 # Libraries
 import tensorflow as tf
+from logger import Logger
 import numpy as np
 import os
 import sys
@@ -120,6 +121,9 @@ class LSTMSequenceClassifier:
 
 
     def extract_lasts(self, data, ind):
+        """ Extract the last element of a numpy matrix
+        :param data: numpy matrix (shape ())
+        """
         batch_range = tf.range(tf.shape(data)[0])
         indices = tf.stack([batch_range, ind], axis=1)
         return tf.gather_nd(data, indices)
